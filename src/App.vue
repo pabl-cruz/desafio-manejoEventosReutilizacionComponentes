@@ -9,14 +9,15 @@ export default {
   },
   data() {
     return {
-      patients: [],
-      currentPatient: null
+      patients: []
     }
   },
   methods: {
     addPatient(patient) {
-      this.currentPatient = patient
       this.patients.push(patient)
+    },
+    deletePatient(id) {
+      this.patients = this.patients.filter((patient) => patient.id !== id)
     }
   }
 }
@@ -25,8 +26,8 @@ export default {
 <template>
   <RegisterForm @add-patient="addPatient" />
   <section class="consults">
-    <div v-for="(patient, id) in patients" :key="patient.id">
-      <ConsultCard :patient="patient" :id="id" />
+    <div v-for="(patient, index) in patients" :key="patient.id">
+      <ConsultCard :patient="patient" :id="index" @remove-patient="deletePatient" />
     </div>
   </section>
 </template>

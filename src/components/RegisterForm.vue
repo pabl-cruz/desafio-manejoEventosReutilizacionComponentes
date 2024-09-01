@@ -24,6 +24,7 @@ export default {
         this.patient.gravity &&
         this.patient.motive
       ) {
+        this.patient.id = Date.now()
         this.$emit('add-patient', { ...this.patient })
       }
     }
@@ -114,7 +115,6 @@ form {
 .red {
   color: red;
 }
-
 #add {
   justify-self: center;
 }

@@ -6,6 +6,11 @@ export default {
       type: Object,
       required: false
     }
+  },
+  methods: {
+    deletePatient() {
+      this.$emit('remove-patient', this.patient.id)
+    }
   }
 }
 </script>
@@ -15,7 +20,8 @@ export default {
     :class="{
       low: patient.gravity === 'Baja',
       med: patient.gravity === 'Media',
-      high: patient.gravity === 'Alta'
+      high: patient.gravity === 'Alta',
+      white: patient.gravity === 'Alta'
     }"
     class="consult"
     v-if="patient"
@@ -29,7 +35,7 @@ export default {
     <h4>Motivo:</h4>
     <p>{{ patient.motive }}</p>
     <br />
-    <button @click="$emit('remove-patient', patient.id)">Eliminar</button>
+    <button @click="deletePatient">Eliminar</button>
   </div>
   <div v-else>
     <h2>Aún no hay consultas registradas</h2>
@@ -45,6 +51,9 @@ export default {
 h2 {
   text-align: center;
   color: red;
+}
+.white {
+  color: white;
 }
 .low {
   background-color: #84dd22;
