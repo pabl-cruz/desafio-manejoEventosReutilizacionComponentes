@@ -1,6 +1,6 @@
 # desafio-manejoEventosReutilizacionComponentes
 
-This template should help get you started developing with Vue 3 in Vite.
+Desafio evaluado de manejo de eventos y reutilización de componentes de M6 de Bootcamp Front-End Desafio Latam.
 
 ## Recommended IDE Setup
 

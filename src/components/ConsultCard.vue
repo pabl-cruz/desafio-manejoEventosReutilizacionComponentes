@@ -1,12 +1,14 @@
 <script>
 export default {
   name: 'ConsultCardComponent',
+  //pasa como propiedad el objeto patient para capturar sus datos.
   props: {
     patient: {
       type: Object,
       required: false
     }
   },
+  //metodo deletePatient emitira a metodo remove-patient del componenete padre para eliminar carta de usuario asignado basado en su id
   methods: {
     deletePatient() {
       this.$emit('remove-patient', this.patient.id)
@@ -16,6 +18,7 @@ export default {
 </script>
 
 <template>
+  <!--estilos condicionales de fondo de carta basado en la gravedad asignada a la consulta del paciente-->
   <div
     :class="{
       low: patient.gravity === 'Baja',
@@ -26,6 +29,7 @@ export default {
     class="consult"
     v-if="patient"
   >
+    <!--si existe instancia de paciente, renderizará contenido del paciente en carta-->
     <h4>Paciente:</h4>
     <p>{{ patient.name }}</p>
     <h4>Fecha:</h4>
@@ -35,8 +39,10 @@ export default {
     <h4>Motivo:</h4>
     <p>{{ patient.motive }}</p>
     <br />
+    <!--button escuchara click y emitira evento deletePatient-->
     <button @click="deletePatient">Eliminar</button>
   </div>
+  <!--si no existen cartas, mostrará texto-->
   <div v-else>
     <h2>Aún no hay consultas registradas</h2>
   </div>
