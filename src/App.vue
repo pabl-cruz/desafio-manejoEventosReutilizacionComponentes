@@ -26,7 +26,7 @@ export default {
   <RegisterForm @add-patient="addPatient" />
   <section class="consults">
     <div v-for="(patient, id) in patients" :key="patient.id">
-      <ConsultCard :patient="currentPatient" />
+      <ConsultCard :patient="patient" :id="id" />
     </div>
   </section>
 </template>
